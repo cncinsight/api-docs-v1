@@ -1,0 +1,1438 @@
+<!doctype html>
+<html>
+  <head>
+    <title>CNC Insight Complete API</title>
+    <style type="text/css">
+      body {
+      	font-family: Trebuchet MS, sans-serif;
+      	font-size: 15px;
+      	color: #444;
+      	margin-right: 24px;
+      }
+      
+      h1	{
+      	font-size: 25px;
+      }
+      h2	{
+      	font-size: 20px;
+      }
+      h3	{
+      	font-size: 16px;
+      	font-weight: bold;
+      }
+      hr	{
+      	height: 1px;
+      	border: 0;
+      	color: #ddd;
+      	background-color: #ddd;
+      }
+      
+      .app-desc {
+        clear: both;
+        margin-left: 20px;
+      }
+      .param-name {
+        width: 100%;
+      }
+      .license-info {
+        margin-left: 20px;
+      }
+      
+      .license-url {
+        margin-left: 20px;
+      }
+      
+      .model {
+        margin: 0 0 0px 20px;
+      }
+      
+      .method {
+        margin-left: 20px;
+      }
+      
+      .method-notes	{
+      	margin: 10px 0 20px 0;
+      	font-size: 90%;
+      	color: #555;
+      }
+      
+      pre {
+        padding: 10px;
+        margin-bottom: 2px;
+      }
+      
+      .http-method {
+       text-transform: uppercase;
+      }
+      
+      pre.get {
+        background-color: #0f6ab4;
+      }
+      
+      pre.post {
+        background-color: #10a54a;
+      }
+      
+      pre.put {
+        background-color: #c5862b;
+      }
+      
+      pre.delete {
+        background-color: #a41e22;
+      }
+      
+      .huge	{
+      	color: #fff;
+      }
+      
+      pre.example {
+        background-color: #f3f3f3;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      
+      code {
+        white-space: pre;
+      }
+      
+      .nickname {
+        font-weight: bold;
+      }
+      
+      .method-path {
+        font-size: 1.5em;
+        background-color: #0f6ab4;
+      }
+      
+      .up {
+        float:right;
+      }
+      
+      .parameter {
+        width: 500px;
+      }
+      
+      .param {
+        width: 500px;
+        padding: 10px 0 0 20px;
+        font-weight: bold;
+      }
+      
+      .param-desc {
+        width: 700px;
+        padding: 0 0 0 20px;
+        color: #777;
+      }
+      
+      .param-type {
+        font-style: italic;
+      }
+      
+      .param-enum-header {
+      width: 700px;
+      padding: 0 0 0 60px;
+      color: #777;
+      font-weight: bold;
+      }
+      
+      .param-enum {
+      width: 700px;
+      padding: 0 0 0 80px;
+      color: #777;
+      font-style: italic;
+      }
+      
+      .field-label {
+        padding: 0;
+        margin: 0;
+        clear: both;
+      }
+      
+      .field-items	{
+      	padding: 0 0 15px 0;
+      	margin-bottom: 15px;
+      }
+      
+      .return-type {
+        clear: both;
+        padding-bottom: 10px;
+      }
+      
+      .param-header {
+        font-weight: bold;
+      }
+      
+      .method-tags {
+        text-align: right;
+      }
+      
+      .method-tag {
+        background: none repeat scroll 0% 0% #24A600;
+        border-radius: 3px;
+        padding: 2px 10px;
+        margin: 2px;
+        color: #FFF;
+        display: inline-block;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>CNC Insight Complete API</h1>
+    <div class="app-desc">Enterprise-grade API for CNC machine monitoring, control, and analytics.
+Supports comprehensive machine data collection, toolpath management, and real-time monitoring.</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
+    <div class="app-desc">Version: 1.0.0</div>
+    <div class="app-desc">BasePath:/v1</div>
+    <div class="license-info">All rights reserved</div>
+    <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+    <ol>
+      <li></li>
+    </ol>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Default">Default</a></h4>
+  <ul>
+  <li><a href="#analyticsProductionGet"><code><span class="http-method">get</span> /analytics/production</code></a></li>
+  <li><a href="#authTokenPost"><code><span class="http-method">post</span> /auth/token</code></a></li>
+  <li><a href="#machinesGet"><code><span class="http-method">get</span> /machines</code></a></li>
+  <li><a href="#machinesMachineIdControlPost"><code><span class="http-method">post</span> /machines/{machineId}/control</code></a></li>
+  <li><a href="#machinesMachineIdCoordinatesGet"><code><span class="http-method">get</span> /machines/{machineId}/coordinates</code></a></li>
+  <li><a href="#machinesMachineIdDiagnosticsPost"><code><span class="http-method">post</span> /machines/{machineId}/diagnostics</code></a></li>
+  <li><a href="#machinesMachineIdMetricsGet"><code><span class="http-method">get</span> /machines/{machineId}/metrics</code></a></li>
+  <li><a href="#machinesPost"><code><span class="http-method">post</span> /machines</code></a></li>
+  <li><a href="#programsGet"><code><span class="http-method">get</span> /programs</code></a></li>
+  <li><a href="#programsPost"><code><span class="http-method">post</span> /programs</code></a></li>
+  <li><a href="#toolLibraryGet"><code><span class="http-method">get</span> /tool-library</code></a></li>
+  <li><a href="#toolLibraryPost"><code><span class="http-method">post</span> /tool-library</code></a></li>
+  <li><a href="#toolpathsGet"><code><span class="http-method">get</span> /toolpaths</code></a></li>
+  <li><a href="#toolpathsPost"><code><span class="http-method">post</span> /toolpaths</code></a></li>
+  </ul>
+
+  <h1><a name="Default">Default</a></h1>
+  <div class="method"><a name="analyticsProductionGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /analytics/production</code></pre></div>
+    <div class="method-summary">Get production analytics (<span class="nickname">analyticsProductionGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">timeframe (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_9">inline_response_200_9</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "material_usage" : 7.061401241503109,
+  "energy_consumption" : 2.3021358869347655,
+  "period" : "period",
+  "efficiency" : 1.4658129805029452,
+  "tool_changes" : 9.301444243932576,
+  "total_runtime" : 0.8008281904610115,
+  "total_parts" : 6.027456183070403,
+  "quality_rate" : 5.962133916683182,
+  "machine_utilization" : 5.637376656633329,
+  "maintenance_hours" : 3.616076749251911
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_9">inline_response_200_9</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="authTokenPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /auth/token</code></pre></div>
+    <div class="method-summary">Get access token (<span class="nickname">authTokenPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#auth_token_body">auth_token_body</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200">inline_response_200</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "access_token" : "access_token",
+  "token_type" : "bearer",
+  "expires_in" : 0
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Token generated successfully
+        <a href="#inline_response_200">inline_response_200</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="machinesGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /machines</code></pre></div>
+    <div class="method-summary">List all CNC machines (<span class="nickname">machinesGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">status (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  </div>      <div class="param">type (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  </div>      <div class="param">capabilities (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#inline_response_200_1">inline_response_200_1</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "capabilities" : [ "capabilities", "capabilities" ],
+  "name" : "name",
+  "model" : "model",
+  "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+  "type" : "type",
+  "manufacturer" : "manufacturer",
+  "status" : "active"
+}, {
+  "capabilities" : [ "capabilities", "capabilities" ],
+  "name" : "name",
+  "model" : "model",
+  "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+  "type" : "type",
+  "manufacturer" : "manufacturer",
+  "status" : "active"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="machinesMachineIdControlPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /machines/{machineId}/control</code></pre></div>
+    <div class="method-summary">Send control commands to machine (<span class="nickname">machinesMachineIdControlPost</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">machineId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  format: uuid</div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#machineId_control_body">machineId_control_body</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_3">inline_response_200_3</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "message" : "message",
+  "status" : "success"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Command executed successfully
+        <a href="#inline_response_200_3">inline_response_200_3</a>
+    <h4 class="field-label">400</h4>
+    Invalid request
+        <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: missingField</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;MISSING_FIELD&quot;,&quot;message&quot;:&quot;Required field missing&quot;,&quot;details&quot;:{&quot;field&quot;:&quot;tool_number&quot;,&quot;error&quot;:&quot;Tool number is required&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:02:00Z&quot;,&quot;request_id&quot;:&quot;req_abc125&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: invalidFormat</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;INVALID_FORMAT&quot;,&quot;message&quot;:&quot;Invalid data format&quot;,&quot;details&quot;:{&quot;field&quot;:&quot;gCode&quot;,&quot;error&quot;:&quot;Invalid G-code syntax&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:01:00Z&quot;,&quot;request_id&quot;:&quot;req_abc124&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: validation</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;VALIDATION_ERROR&quot;,&quot;message&quot;:&quot;Invalid request parameters&quot;,&quot;details&quot;:{&quot;field&quot;:&quot;feedrate_override&quot;,&quot;error&quot;:&quot;Must be between 0 and 200&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:00:00Z&quot;,&quot;request_id&quot;:&quot;req_abc123&quot;}</code></pre>
+    <h4 class="field-label">403</h4>
+    Permission denied
+        <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: unauthorized</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;PERMISSION_DENIED&quot;,&quot;message&quot;:&quot;Insufficient permissions&quot;,&quot;details&quot;:{&quot;required_permission&quot;:&quot;machine:control&quot;,&quot;user_role&quot;:&quot;operator&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:03:00Z&quot;,&quot;request_id&quot;:&quot;req_abc126&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: invalidScope</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;INVALID_SCOPE&quot;,&quot;message&quot;:&quot;Token scope insufficient&quot;,&quot;details&quot;:{&quot;required_scope&quot;:&quot;write&quot;,&quot;provided_scope&quot;:&quot;read&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:05:00Z&quot;,&quot;request_id&quot;:&quot;req_abc128&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: tokenExpired</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;TOKEN_EXPIRED&quot;,&quot;message&quot;:&quot;Authentication token has expired&quot;,&quot;details&quot;:{&quot;expired_at&quot;:&quot;2024-12-26T09:00:00Z&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:04:00Z&quot;,&quot;request_id&quot;:&quot;req_abc127&quot;}</code></pre>
+    <h4 class="field-label">404</h4>
+    Resource not found
+        <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: programNotFound</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;PROGRAM_NOT_FOUND&quot;,&quot;message&quot;:&quot;Program not found&quot;,&quot;details&quot;:{&quot;program_id&quot;:&quot;123e4567-e89b-12d3-a456-426614174002&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:08:00Z&quot;,&quot;request_id&quot;:&quot;req_abc131&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: toolpathNotFound</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;TOOLPATH_NOT_FOUND&quot;,&quot;message&quot;:&quot;Toolpath not found&quot;,&quot;details&quot;:{&quot;toolpath_id&quot;:&quot;123e4567-e89b-12d3-a456-426614174001&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:07:00Z&quot;,&quot;request_id&quot;:&quot;req_abc130&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: machineNotFound</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;MACHINE_NOT_FOUND&quot;,&quot;message&quot;:&quot;Machine not found&quot;,&quot;details&quot;:{&quot;machine_id&quot;:&quot;123e4567-e89b-12d3-a456-426614174000&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:06:00Z&quot;,&quot;request_id&quot;:&quot;req_abc129&quot;}</code></pre>
+    <h4 class="field-label">409</h4>
+    Machine state conflict
+        <a href="#Error">Error</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="machinesMachineIdCoordinatesGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /machines/{machineId}/coordinates</code></pre></div>
+    <div class="method-summary">Get real-time machine coordinates (<span class="nickname">machinesMachineIdCoordinatesGet</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">machineId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  format: uuid</div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">coordinate_system (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_2">inline_response_200_2</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "machine" : {
+    "a" : 5.962133916683182,
+    "b" : 5.637376656633329,
+    "c" : 2.3021358869347655,
+    "x" : 0.8008281904610115,
+    "y" : 6.027456183070403,
+    "z" : 1.4658129805029452
+  },
+  "work" : {
+    "x" : 7.061401241503109,
+    "y" : 9.301444243932576,
+    "z" : 3.616076749251911
+  },
+  "workOffset" : "workOffset"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_2">inline_response_200_2</a>
+    <h4 class="field-label">404</h4>
+    Resource not found
+        <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: programNotFound</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;PROGRAM_NOT_FOUND&quot;,&quot;message&quot;:&quot;Program not found&quot;,&quot;details&quot;:{&quot;program_id&quot;:&quot;123e4567-e89b-12d3-a456-426614174002&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:08:00Z&quot;,&quot;request_id&quot;:&quot;req_abc131&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: toolpathNotFound</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;TOOLPATH_NOT_FOUND&quot;,&quot;message&quot;:&quot;Toolpath not found&quot;,&quot;details&quot;:{&quot;toolpath_id&quot;:&quot;123e4567-e89b-12d3-a456-426614174001&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:07:00Z&quot;,&quot;request_id&quot;:&quot;req_abc130&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: machineNotFound</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;MACHINE_NOT_FOUND&quot;,&quot;message&quot;:&quot;Machine not found&quot;,&quot;details&quot;:{&quot;machine_id&quot;:&quot;123e4567-e89b-12d3-a456-426614174000&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:06:00Z&quot;,&quot;request_id&quot;:&quot;req_abc129&quot;}</code></pre>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="machinesMachineIdDiagnosticsPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /machines/{machineId}/diagnostics</code></pre></div>
+    <div class="method-summary">Run machine diagnostics (<span class="nickname">machinesMachineIdDiagnosticsPost</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">machineId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  format: uuid</div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#machineId_diagnostics_body">machineId_diagnostics_body</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_5">inline_response_200_5</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "machine_id" : "machine_id",
+  "results" : [ {
+    "test" : "test",
+    "details" : "details",
+    "recommendations" : [ "recommendations", "recommendations" ],
+    "status" : "pass"
+  }, {
+    "test" : "test",
+    "details" : "details",
+    "recommendations" : [ "recommendations", "recommendations" ],
+    "status" : "pass"
+  } ],
+  "timestamp" : "2000-01-23T04:56:07.000+00:00"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Diagnostics completed
+        <a href="#inline_response_200_5">inline_response_200_5</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="machinesMachineIdMetricsGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /machines/{machineId}/metrics</code></pre></div>
+    <div class="method-summary">Get comprehensive machine metrics (<span class="nickname">machinesMachineIdMetricsGet</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">machineId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  format: uuid</div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">metrics (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  </div>      <div class="param">interval (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_4">inline_response_200_4</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "machine_id" : "machine_id",
+  "metrics" : {
+    "axes" : {
+      "x" : {
+        "load" : 5.637376656633329,
+        "position_error" : 2.3021358869347655
+      }
+    },
+    "power" : {
+      "total" : 7.061401241503109,
+      "axes" : 3.616076749251911,
+      "spindle" : 9.301444243932576
+    },
+    "spindle" : {
+      "load" : 0.8008281904610115,
+      "temperature" : 1.4658129805029452,
+      "vibration" : 5.962133916683182,
+      "speed" : 6.027456183070403
+    }
+  },
+  "timestamp" : "2000-01-23T04:56:07.000+00:00"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_4">inline_response_200_4</a>
+    <h4 class="field-label">404</h4>
+    Resource not found
+        <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: programNotFound</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;PROGRAM_NOT_FOUND&quot;,&quot;message&quot;:&quot;Program not found&quot;,&quot;details&quot;:{&quot;program_id&quot;:&quot;123e4567-e89b-12d3-a456-426614174002&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:08:00Z&quot;,&quot;request_id&quot;:&quot;req_abc131&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: toolpathNotFound</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;TOOLPATH_NOT_FOUND&quot;,&quot;message&quot;:&quot;Toolpath not found&quot;,&quot;details&quot;:{&quot;toolpath_id&quot;:&quot;123e4567-e89b-12d3-a456-426614174001&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:07:00Z&quot;,&quot;request_id&quot;:&quot;req_abc130&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: machineNotFound</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;MACHINE_NOT_FOUND&quot;,&quot;message&quot;:&quot;Machine not found&quot;,&quot;details&quot;:{&quot;machine_id&quot;:&quot;123e4567-e89b-12d3-a456-426614174000&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:06:00Z&quot;,&quot;request_id&quot;:&quot;req_abc129&quot;}</code></pre>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="machinesPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /machines</code></pre></div>
+    <div class="method-summary">Register new machine (<span class="nickname">machinesPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#machines_body">machines_body</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Machine registered successfully
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid request
+        <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: missingField</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;MISSING_FIELD&quot;,&quot;message&quot;:&quot;Required field missing&quot;,&quot;details&quot;:{&quot;field&quot;:&quot;tool_number&quot;,&quot;error&quot;:&quot;Tool number is required&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:02:00Z&quot;,&quot;request_id&quot;:&quot;req_abc125&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: invalidFormat</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;INVALID_FORMAT&quot;,&quot;message&quot;:&quot;Invalid data format&quot;,&quot;details&quot;:{&quot;field&quot;:&quot;gCode&quot;,&quot;error&quot;:&quot;Invalid G-code syntax&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:01:00Z&quot;,&quot;request_id&quot;:&quot;req_abc124&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: validation</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;VALIDATION_ERROR&quot;,&quot;message&quot;:&quot;Invalid request parameters&quot;,&quot;details&quot;:{&quot;field&quot;:&quot;feedrate_override&quot;,&quot;error&quot;:&quot;Must be between 0 and 200&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:00:00Z&quot;,&quot;request_id&quot;:&quot;req_abc123&quot;}</code></pre>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="programsGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /programs</code></pre></div>
+    <div class="method-summary">List all CNC programs (<span class="nickname">programsGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#inline_response_200_8">inline_response_200_8</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "estimatedTime" : 0.8008281904610115,
+  "name" : "name",
+  "id" : "id",
+  "toolpaths" : [ "toolpaths", "toolpaths" ],
+  "status" : "draft"
+}, {
+  "estimatedTime" : 0.8008281904610115,
+  "name" : "name",
+  "id" : "id",
+  "toolpaths" : [ "toolpaths", "toolpaths" ],
+  "status" : "draft"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="programsPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /programs</code></pre></div>
+    <div class="method-summary">Create new program (<span class="nickname">programsPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#programs_body">programs_body</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Program created
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid request
+        <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: missingField</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;MISSING_FIELD&quot;,&quot;message&quot;:&quot;Required field missing&quot;,&quot;details&quot;:{&quot;field&quot;:&quot;tool_number&quot;,&quot;error&quot;:&quot;Tool number is required&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:02:00Z&quot;,&quot;request_id&quot;:&quot;req_abc125&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: invalidFormat</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;INVALID_FORMAT&quot;,&quot;message&quot;:&quot;Invalid data format&quot;,&quot;details&quot;:{&quot;field&quot;:&quot;gCode&quot;,&quot;error&quot;:&quot;Invalid G-code syntax&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:01:00Z&quot;,&quot;request_id&quot;:&quot;req_abc124&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: validation</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;VALIDATION_ERROR&quot;,&quot;message&quot;:&quot;Invalid request parameters&quot;,&quot;details&quot;:{&quot;field&quot;:&quot;feedrate_override&quot;,&quot;error&quot;:&quot;Must be between 0 and 200&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:00:00Z&quot;,&quot;request_id&quot;:&quot;req_abc123&quot;}</code></pre>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="toolLibraryGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /tool-library</code></pre></div>
+    <div class="method-summary">Get tool library (<span class="nickname">toolLibraryGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#inline_response_200_7">inline_response_200_7</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "number" : 0,
+  "diameter" : 6.027456183070403,
+  "flutes" : 5,
+  "material" : "material",
+  "length" : 1.4658129805029452,
+  "totalUsage" : 5.637376656633329,
+  "remainingLife" : 2.3021358869347655,
+  "id" : "id",
+  "type" : "type"
+}, {
+  "number" : 0,
+  "diameter" : 6.027456183070403,
+  "flutes" : 5,
+  "material" : "material",
+  "length" : 1.4658129805029452,
+  "totalUsage" : 5.637376656633329,
+  "remainingLife" : 2.3021358869347655,
+  "id" : "id",
+  "type" : "type"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="toolLibraryPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /tool-library</code></pre></div>
+    <div class="method-summary">Add tool to library (<span class="nickname">toolLibraryPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#toollibrary_body">toollibrary_body</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Tool added
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid request
+        <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: missingField</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;MISSING_FIELD&quot;,&quot;message&quot;:&quot;Required field missing&quot;,&quot;details&quot;:{&quot;field&quot;:&quot;tool_number&quot;,&quot;error&quot;:&quot;Tool number is required&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:02:00Z&quot;,&quot;request_id&quot;:&quot;req_abc125&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: invalidFormat</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;INVALID_FORMAT&quot;,&quot;message&quot;:&quot;Invalid data format&quot;,&quot;details&quot;:{&quot;field&quot;:&quot;gCode&quot;,&quot;error&quot;:&quot;Invalid G-code syntax&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:01:00Z&quot;,&quot;request_id&quot;:&quot;req_abc124&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: validation</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;VALIDATION_ERROR&quot;,&quot;message&quot;:&quot;Invalid request parameters&quot;,&quot;details&quot;:{&quot;field&quot;:&quot;feedrate_override&quot;,&quot;error&quot;:&quot;Must be between 0 and 200&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:00:00Z&quot;,&quot;request_id&quot;:&quot;req_abc123&quot;}</code></pre>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="toolpathsGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /toolpaths</code></pre></div>
+    <div class="method-summary">List all toolpaths (<span class="nickname">toolpathsGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">type (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#inline_response_200_6">inline_response_200_6</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "name" : "name",
+  "id" : "id",
+  "type" : "type",
+  "parameters" : {
+    "feedRate" : 0.8008281904610115,
+    "stepover" : 1.4658129805029452,
+    "stepdown" : 5.962133916683182,
+    "spindleSpeed" : 6.027456183070403
+  }
+}, {
+  "name" : "name",
+  "id" : "id",
+  "type" : "type",
+  "parameters" : {
+    "feedRate" : 0.8008281904610115,
+    "stepover" : 1.4658129805029452,
+    "stepdown" : 5.962133916683182,
+    "spindleSpeed" : 6.027456183070403
+  }
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="toolpathsPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /toolpaths</code></pre></div>
+    <div class="method-summary">Create new toolpath (<span class="nickname">toolpathsPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#toolpaths_body">toolpaths_body</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Toolpath created
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid request
+        <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: missingField</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;MISSING_FIELD&quot;,&quot;message&quot;:&quot;Required field missing&quot;,&quot;details&quot;:{&quot;field&quot;:&quot;tool_number&quot;,&quot;error&quot;:&quot;Tool number is required&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:02:00Z&quot;,&quot;request_id&quot;:&quot;req_abc125&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: invalidFormat</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;INVALID_FORMAT&quot;,&quot;message&quot;:&quot;Invalid data format&quot;,&quot;details&quot;:{&quot;field&quot;:&quot;gCode&quot;,&quot;error&quot;:&quot;Invalid G-code syntax&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:01:00Z&quot;,&quot;request_id&quot;:&quot;req_abc124&quot;}</code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: validation</div>
+    <pre class="example"><code>{&quot;code&quot;:&quot;VALIDATION_ERROR&quot;,&quot;message&quot;:&quot;Invalid request parameters&quot;,&quot;details&quot;:{&quot;field&quot;:&quot;feedrate_override&quot;,&quot;error&quot;:&quot;Must be between 0 and 200&quot;},&quot;timestamp&quot;:&quot;2024-12-26T10:00:00Z&quot;,&quot;request_id&quot;:&quot;req_abc123&quot;}</code></pre>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#Error"><code>Error</code></a></li>
+    <li><a href="#auth_token_body"><code>auth_token_body</code></a></li>
+    <li><a href="#inline_response_200"><code>inline_response_200</code></a></li>
+    <li><a href="#inline_response_200_1"><code>inline_response_200_1</code></a></li>
+    <li><a href="#inline_response_200_2"><code>inline_response_200_2</code></a></li>
+    <li><a href="#inline_response_200_2_machine"><code>inline_response_200_2_machine</code></a></li>
+    <li><a href="#inline_response_200_2_work"><code>inline_response_200_2_work</code></a></li>
+    <li><a href="#inline_response_200_3"><code>inline_response_200_3</code></a></li>
+    <li><a href="#inline_response_200_4"><code>inline_response_200_4</code></a></li>
+    <li><a href="#inline_response_200_4_metrics"><code>inline_response_200_4_metrics</code></a></li>
+    <li><a href="#inline_response_200_4_metrics_axes"><code>inline_response_200_4_metrics_axes</code></a></li>
+    <li><a href="#inline_response_200_4_metrics_axes_x"><code>inline_response_200_4_metrics_axes_x</code></a></li>
+    <li><a href="#inline_response_200_4_metrics_power"><code>inline_response_200_4_metrics_power</code></a></li>
+    <li><a href="#inline_response_200_4_metrics_spindle"><code>inline_response_200_4_metrics_spindle</code></a></li>
+    <li><a href="#inline_response_200_5"><code>inline_response_200_5</code></a></li>
+    <li><a href="#inline_response_200_5_results"><code>inline_response_200_5_results</code></a></li>
+    <li><a href="#inline_response_200_6"><code>inline_response_200_6</code></a></li>
+    <li><a href="#inline_response_200_7"><code>inline_response_200_7</code></a></li>
+    <li><a href="#inline_response_200_8"><code>inline_response_200_8</code></a></li>
+    <li><a href="#inline_response_200_9"><code>inline_response_200_9</code></a></li>
+    <li><a href="#machineId_control_body"><code>machineId_control_body</code></a></li>
+    <li><a href="#machineId_diagnostics_body"><code>machineId_diagnostics_body</code></a></li>
+    <li><a href="#machines_body"><code>machines_body</code></a></li>
+    <li><a href="#machinesmachineIdcontrol_parameters"><code>machinesmachineIdcontrol_parameters</code></a></li>
+    <li><a href="#programs_body"><code>programs_body</code></a></li>
+    <li><a href="#toollibrary_body"><code>toollibrary_body</code></a></li>
+    <li><a href="#toolpaths_body"><code>toolpaths_body</code></a></li>
+    <li><a href="#toolpaths_parameters"><code>toolpaths_parameters</code></a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="Error"><code>Error</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">code </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">details (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
+<div class="param">timestamp (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">request_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="auth_token_body"><code>auth_token_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">grant_type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">client_credentials</div><div class="param-enum">password</div>
+<div class="param">client_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">client_secret (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200"><code>inline_response_200</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">access_token (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">token_type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">bearer</div>
+<div class="param">expires_in (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_1"><code>inline_response_200_1</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span>  format: uuid</div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">model (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">manufacturer (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">capabilities (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+<div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">active</div><div class="param-enum">idle</div><div class="param-enum">maintenance</div><div class="param-enum">error</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_2"><code>inline_response_200_2</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">machine (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_2_machine">inline_response_200_2_machine</a></span>  </div>
+<div class="param">work (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_2_work">inline_response_200_2_work</a></span>  </div>
+<div class="param">workOffset (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_2_machine"><code>inline_response_200_2_machine</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">x (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">y (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">z (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">a (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">b (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">c (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_2_work"><code>inline_response_200_2_work</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">x (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">y (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">z (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_3"><code>inline_response_200_3</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">success</div><div class="param-enum">pending</div>
+<div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_4"><code>inline_response_200_4</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">machine_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">timestamp (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">metrics (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_4_metrics">inline_response_200_4_metrics</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_4_metrics"><code>inline_response_200_4_metrics</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">spindle (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_4_metrics_spindle">inline_response_200_4_metrics_spindle</a></span>  </div>
+<div class="param">axes (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_4_metrics_axes">inline_response_200_4_metrics_axes</a></span>  </div>
+<div class="param">power (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_4_metrics_power">inline_response_200_4_metrics_power</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_4_metrics_axes"><code>inline_response_200_4_metrics_axes</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">x (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_4_metrics_axes_x">inline_response_200_4_metrics_axes_x</a></span>  </div>
+<div class="param">y (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_4_metrics_axes_x">inline_response_200_4_metrics_axes_x</a></span>  </div>
+<div class="param">z (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_4_metrics_axes_x">inline_response_200_4_metrics_axes_x</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_4_metrics_axes_x"><code>inline_response_200_4_metrics_axes_x</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">load (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">position_error (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_4_metrics_power"><code>inline_response_200_4_metrics_power</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">total (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">spindle (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">axes (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_4_metrics_spindle"><code>inline_response_200_4_metrics_spindle</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">load (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">speed (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">temperature (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">vibration (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_5"><code>inline_response_200_5</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">machine_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">timestamp (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">results (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_5_results">array[inline_response_200_5_results]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_5_results"><code>inline_response_200_5_results</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">test (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">pass</div><div class="param-enum">fail</div><div class="param-enum">warning</div>
+<div class="param">details (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">recommendations (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_6"><code>inline_response_200_6</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">parameters (optional)</div><div class="param-desc"><span class="param-type"><a href="#toolpaths_parameters">toolpaths_parameters</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_7"><code>inline_response_200_7</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">number (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">diameter (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">length (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">flutes (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">material (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">totalUsage (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">remainingLife (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_8"><code>inline_response_200_8</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">draft</div><div class="param-enum">active</div><div class="param-enum">completed</div>
+<div class="param">toolpaths (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+<div class="param">estimatedTime (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_9"><code>inline_response_200_9</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">period (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">total_runtime (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">total_parts (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">efficiency (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">quality_rate (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">machine_utilization (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">energy_consumption (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">material_usage (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">tool_changes (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">maintenance_hours (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="machineId_control_body"><code>machineId_control_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">command (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">start</div><div class="param-enum">stop</div><div class="param-enum">pause</div><div class="param-enum">resume</div><div class="param-enum">reset</div><div class="param-enum">home</div><div class="param-enum">tool_change</div>
+<div class="param">parameters (optional)</div><div class="param-desc"><span class="param-type"><a href="#machinesmachineIdcontrol_parameters">machinesmachineIdcontrol_parameters</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="machineId_diagnostics_body"><code>machineId_diagnostics_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">tests (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        
+<div class="param">level (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">basic</div><div class="param-enum">comprehensive</div><div class="param-enum">advanced</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="machines_body"><code>machines_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">model </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">manufacturer </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">mill</div><div class="param-enum">lathe</div><div class="param-enum">router</div><div class="param-enum">grinder</div>
+<div class="param">capabilities (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="machinesmachineIdcontrol_parameters"><code>machinesmachineIdcontrol_parameters</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">feedrate_override (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">spindle_override (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">tool_number (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">coolant (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">flood</div><div class="param-enum">mist</div><div class="param-enum">off</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="programs_body"><code>programs_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">gCode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">toolpaths (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="toollibrary_body"><code>toollibrary_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">number </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">diameter </div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">length </div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">flutes (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">material (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="toolpaths_body"><code>toolpaths_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">contour</div><div class="param-enum">pocket</div><div class="param-enum">drill</div><div class="param-enum">surfacing</div><div class="param-enum">multiaxis</div>
+<div class="param">parameters (optional)</div><div class="param-desc"><span class="param-type"><a href="#toolpaths_parameters">toolpaths_parameters</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="toolpaths_parameters"><code>toolpaths_parameters</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">feedRate (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">spindleSpeed (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">stepover (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">stepdown (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>
